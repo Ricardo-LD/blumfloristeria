@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffddd1;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30% {
+    transform: scale(1.1);
+  }
+  20%, 40% {
+    transform: scale(1);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes floatHeart2 {
+  0% {
+    transform: translateY(0) scale(0) translateX(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50px) scale(0.8) translateX(-5px);
+  }
+  100% {
+    transform: translateY(-90px) scale(1) translateX(5px);
+    opacity: 0;
+  }
+}
+
+.floating-hearts {
+  position: relative;
+  display: inline-block;
+}
+
+.floating-hearts::before,
+.floating-hearts::after {
+  content: '💗';
+  position: absolute;
+  font-size: 1.5rem;
+  animation: floatHeart 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-hearts::before {
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.floating-hearts::after {
+  right: -5%;
+  animation-delay: 1.5s;
+}
+
+.floating-hearts > span::before,
+.floating-hearts > span::after {
+  content: '💗';
+  position: absolute;
+  font-size: 1.2rem;
+  animation: floatHeart2 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-hearts > span::before {
+  left: 15%;
+  top: 10%;
+  animation-delay: 0.8s;
+}
+
+.floating-hearts > span::after {
+  right: 20%;
+  top: 5%;
+  animation-delay: 2.2s;
+}
